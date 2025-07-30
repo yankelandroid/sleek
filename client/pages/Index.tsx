@@ -121,33 +121,33 @@ function AddAlarmModal({ state, actions }: {
             </label>
             <input
               type="text"
-              placeholder="Mon réveil du matin"
+              placeholder="Mon r��veil du matin"
               value={state.selectedAlarm?.label || ''}
               onChange={(e) => actions.updateSelectedAlarm({ label: e.target.value })}
               className="w-full bg-alarm-surface-light border border-alarm-surface-lighter rounded-xl px-4 py-3 text-alarm-text focus:outline-none focus:ring-2 focus:ring-alarm-primary focus:border-transparent transition-all duration-200 focus-ring"
             />
           </div>
 
-          {/* YouTube Search */}
+          {/* YouTube URL Input */}
           <div className="animate-slide-up">
             <label className="block text-alarm-text-muted text-sm font-medium mb-2">
-              Chanson YouTube
+              URL YouTube
             </label>
             <div className="flex flex-col sm:flex-row gap-2 mb-4">
               <input
-                type="text"
-                placeholder="Rechercher une chanson..."
+                type="url"
+                placeholder="https://youtube.com/watch?v=..."
                 value={state.youtubeQuery}
                 onChange={(e) => actions.setYoutubeQuery(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && actions.searchYoutube()}
+                onKeyDown={(e) => e.key === 'Enter' && actions.convertFromUrl()}
                 className="flex-1 bg-alarm-surface-light border border-alarm-surface-lighter rounded-xl px-4 py-3 text-alarm-text focus:outline-none focus:ring-2 focus:ring-alarm-primary focus:border-transparent transition-all duration-200 focus-ring"
               />
               <button
-                onClick={actions.searchYoutube}
-                disabled={state.isSearching}
+                onClick={actions.convertFromUrl}
+                disabled={state.isSearching || !state.youtubeQuery.trim()}
                 className="bg-alarm-secondary hover:bg-alarm-secondary/90 disabled:opacity-50 text-white px-6 py-3 rounded-xl font-medium transition-all duration-200 button-hover-lift focus-ring shadow-lg shadow-alarm-secondary/30 whitespace-nowrap"
               >
-                {state.isSearching ? '🔍' : 'Rechercher'}
+                {state.isSearching ? '⚡' : 'Convertir'}
               </button>
             </div>
 
