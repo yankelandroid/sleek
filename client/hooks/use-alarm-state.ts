@@ -253,7 +253,7 @@ export function useAlarmState() {
       saveAlarm,
       deleteAlarm,
       toggleAlarm,
-      searchYoutube,
+      convertFromUrl,
       selectSong,
       updateSelectedAlarm,
       setYoutubeQuery
