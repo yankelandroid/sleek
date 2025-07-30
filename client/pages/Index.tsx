@@ -65,19 +65,19 @@ function AlarmCard({ alarm, onEdit, onDelete, onToggle }: {
 
 function EmptyState({ onAddAlarm }: { onAddAlarm: () => void }) {
   return (
-    <div className="text-center py-16 animate-fade-in">
-      <div className="w-20 h-20 bg-alarm-surface-light rounded-full flex items-center justify-center mx-auto mb-6">
+    <div className="text-center py-16 animate-bounce-in">
+      <div className="w-20 h-20 bg-alarm-surface-light rounded-full flex items-center justify-center mx-auto mb-6 glass-effect animate-pulse-soft">
         <Music className="w-8 h-8 text-alarm-text-muted" />
       </div>
-      <h3 className="text-xl font-medium text-alarm-text mb-2">
+      <h3 className="text-xl font-medium text-alarm-text mb-2 animate-slide-down">
         Aucun réveil configuré
       </h3>
-      <p className="text-alarm-text-muted mb-8 max-w-sm mx-auto">
+      <p className="text-alarm-text-muted mb-8 max-w-sm mx-auto animate-slide-up">
         Ajoutez votre premier réveil pour commencer à organiser vos matinées
       </p>
       <button
         onClick={onAddAlarm}
-        className="bg-alarm-primary hover:bg-alarm-primary/90 text-white px-6 py-3 rounded-xl font-medium transition-all duration-200 animate-scale-in"
+        className="bg-alarm-primary hover:bg-alarm-primary/90 text-white px-6 py-3 rounded-xl font-medium transition-all duration-200 animate-scale-in button-hover-lift focus-ring shadow-lg shadow-alarm-primary/30"
       >
         Créer mon premier réveil
       </button>
