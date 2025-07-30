@@ -57,6 +57,23 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        alarm: {
+          primary: "hsl(var(--alarm-primary))",
+          secondary: "hsl(var(--alarm-secondary))",
+          surface: "hsl(var(--alarm-surface))",
+          "surface-light": "hsl(var(--alarm-surface-light))",
+          "surface-lighter": "hsl(var(--alarm-surface-lighter))",
+          text: "hsl(var(--alarm-text))",
+          "text-muted": "hsl(var(--alarm-text-muted))",
+          "text-light": "hsl(var(--alarm-text-light))",
+          overlay: "hsl(var(--alarm-overlay))",
+        },
+      },
+      fontFamily: {
+        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+      },
+      backdropBlur: {
+        xs: '2px',
       },
       borderRadius: {
         lg: "var(--radius)",
