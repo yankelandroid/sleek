@@ -199,16 +199,16 @@ function AddAlarmModal({ state, actions }: {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-3 mt-8">
+        <div className="flex flex-col sm:flex-row gap-3 mt-8 animate-slide-up">
           <button
             onClick={actions.cancelAlarm}
-            className="flex-1 bg-transparent border border-alarm-surface-lighter text-alarm-text-muted hover:bg-alarm-surface-light hover:text-alarm-text rounded-xl py-3 font-medium transition-all duration-200"
+            className="flex-1 bg-transparent border border-alarm-surface-lighter text-alarm-text-muted hover:bg-alarm-surface-light hover:text-alarm-text rounded-xl py-3 px-6 font-medium transition-all duration-200 button-hover-lift focus-ring"
           >
             Annuler
           </button>
           <button
             onClick={actions.saveAlarm}
-            className="flex-1 bg-alarm-primary hover:bg-alarm-primary/90 text-white rounded-xl py-3 font-medium transition-all duration-200"
+            className="flex-1 bg-alarm-primary hover:bg-alarm-primary/90 text-white rounded-xl py-3 px-6 font-medium transition-all duration-200 button-hover-lift focus-ring shadow-lg shadow-alarm-primary/30"
           >
             Sauvegarder
           </button>
