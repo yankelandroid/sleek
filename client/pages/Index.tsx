@@ -153,16 +153,21 @@ function AddAlarmModal({ state, actions }: {
 
             {/* Selected Song Display */}
             {state.selectedAlarm?.youtubeUrl && (
-              <div className="bg-alarm-secondary/10 border border-alarm-secondary/30 rounded-xl p-4 mb-4">
+              <div className="bg-alarm-secondary/10 border border-alarm-secondary/30 rounded-xl p-4 mb-4 animate-scale-in">
                 <div className="text-alarm-secondary text-sm font-medium mb-1">
                   Chanson sélectionnée:
                 </div>
                 <div className="flex items-center gap-2 text-alarm-text mb-2">
-                  <Music className="w-4 h-4" />
-                  <span>{state.selectedAlarm.songTitle}</span>
+                  <Music className="w-4 h-4 flex-shrink-0" />
+                  <span className="truncate">{state.selectedAlarm.songTitle}</span>
                 </div>
                 <div className="text-alarm-text-muted text-sm italic">
-                  {state.selectedAlarm.conversionStatus === 'converting' && '🔄 Conversion en cours...'}
+                  {state.selectedAlarm.conversionStatus === 'converting' && (
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-4 border-2 border-alarm-secondary border-t-transparent rounded-full animate-spin"></div>
+                      Conversion en cours...
+                    </div>
+                  )}
                   {state.selectedAlarm.conversionStatus === 'ready' && '✅ Fichier MP3 prêt pour le réveil'}
                   {state.selectedAlarm.conversionStatus === 'error' && '❌ Erreur lors de la conversion'}
                 </div>
