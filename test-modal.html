@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        setTimeout(() => {
+            // Try to click the "Ajouter un réveil" button
+            const addButton = document.querySelector('button');
+            if (addButton && addButton.textContent.includes('Ajouter')) {
+                addButton.click();
+            }
+        }, 2000);
+    </script>
+</head>
+<body>
+    <p>Testing modal functionality...</p>
+</body>
+</html>
