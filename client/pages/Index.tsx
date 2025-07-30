@@ -225,16 +225,17 @@ export default function Index() {
     <div className="min-h-screen bg-background p-4 md:p-6">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8 gap-4">
-          <h1 className="text-3xl md:text-4xl font-bold text-alarm-text">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 gap-4 animate-slide-down">
+          <h1 className="text-3xl md:text-4xl font-bold text-alarm-text text-center sm:text-left">
             Mes Réveils
           </h1>
           <button
             onClick={actions.addAlarm}
-            className="bg-alarm-primary hover:bg-alarm-primary/90 text-white rounded-xl px-6 py-3 font-medium transition-all duration-200 flex items-center gap-2 whitespace-nowrap animate-scale-in"
+            className="bg-alarm-primary hover:bg-alarm-primary/90 text-white rounded-xl px-6 py-3 font-medium transition-all duration-200 flex items-center justify-center gap-2 whitespace-nowrap animate-scale-in button-hover-lift focus-ring shadow-lg shadow-alarm-primary/30"
           >
             <Plus className="w-5 h-5" />
-            Ajouter un réveil
+            <span className="hidden sm:inline">Ajouter un réveil</span>
+            <span className="sm:hidden">Ajouter</span>
           </button>
         </div>
 
