@@ -95,8 +95,8 @@ function AddAlarmModal({ state, actions }: {
 
   return (
     <div className="fixed inset-0 bg-alarm-overlay/80 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fade-in">
-      <div className="bg-alarm-surface border border-alarm-surface-light rounded-3xl p-8 w-full max-w-lg max-h-[90vh] overflow-y-auto animate-scale-in">
-        <h3 className="text-2xl font-semibold text-alarm-text text-center mb-8">
+      <div className="bg-alarm-surface border border-alarm-surface-light rounded-3xl p-6 md:p-8 w-full max-w-lg max-h-[90vh] overflow-y-auto animate-scale-in glass-effect shadow-2xl">
+        <h3 className="text-xl md:text-2xl font-semibold text-alarm-text text-center mb-6 md:mb-8 animate-slide-down">
           {isEditing ? 'Modifier le réveil' : 'Ajouter un réveil'}
         </h3>
 
