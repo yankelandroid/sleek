@@ -9,39 +9,39 @@ function AlarmCard({ alarm, onEdit, onDelete, onToggle }: {
   onToggle: (id: string) => void;
 }) {
   return (
-    <div className="bg-alarm-surface border border-alarm-surface-light rounded-2xl p-5 transition-all duration-300 hover:bg-alarm-surface-light animate-slide-up">
-      <div className="flex items-center justify-between">
+    <div className="bg-alarm-surface border border-alarm-surface-light rounded-2xl p-5 transition-all duration-300 hover:bg-alarm-surface-light hover:scale-[1.02] animate-slide-up glass-effect">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div className="flex-1">
-          <div 
-            className={`text-3xl font-semibold mb-1 transition-colors duration-200 ${
+          <div
+            className={`text-4xl sm:text-3xl font-semibold mb-2 sm:mb-1 transition-colors duration-200 ${
               alarm.enabled ? 'text-alarm-text' : 'text-alarm-text-light'
             }`}
           >
             {alarm.time}
           </div>
-          <div className="text-alarm-text-muted text-base mb-1">
+          <div className="text-alarm-text-muted text-base mb-2 sm:mb-1">
             {alarm.label}
           </div>
           {alarm.songTitle && (
             <div className="flex items-center gap-2 text-alarm-secondary text-sm">
-              <Music className="w-4 h-4" />
+              <Music className="w-4 h-4 flex-shrink-0" />
               <span className="truncate">{alarm.songTitle}</span>
             </div>
           )}
         </div>
-        
-        <div className="flex items-center gap-3">
+
+        <div className="flex items-center justify-between sm:justify-end gap-3">
           <button
             onClick={() => onEdit(alarm)}
-            className="bg-transparent border border-alarm-surface-lighter text-alarm-text-muted hover:bg-alarm-surface-lighter hover:text-alarm-text rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200"
+            className="bg-transparent border border-alarm-surface-lighter text-alarm-text-muted hover:bg-alarm-surface-lighter hover:text-alarm-text rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200 button-hover-lift focus-ring"
           >
             <Edit2 className="w-4 h-4" />
           </button>
-          
+
           <button
             onClick={() => onToggle(alarm.id)}
-            className={`relative w-12 h-7 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-alarm-primary focus:ring-opacity-50 ${
-              alarm.enabled ? 'bg-alarm-primary' : 'bg-alarm-surface-lighter'
+            className={`relative w-12 h-7 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-alarm-primary focus:ring-opacity-50 button-hover-lift ${
+              alarm.enabled ? 'bg-alarm-primary shadow-lg shadow-alarm-primary/30' : 'bg-alarm-surface-lighter'
             }`}
           >
             <div
@@ -50,10 +50,10 @@ function AlarmCard({ alarm, onEdit, onDelete, onToggle }: {
               }`}
             />
           </button>
-          
+
           <button
             onClick={() => onDelete(alarm.id)}
-            className="bg-transparent text-red-400 hover:bg-red-400/10 hover:text-red-300 rounded-lg p-2 transition-all duration-200"
+            className="bg-transparent text-red-400 hover:bg-red-400/10 hover:text-red-300 rounded-lg p-2 transition-all duration-200 button-hover-lift focus-ring"
           >
             <Trash2 className="w-4 h-4" />
           </button>
