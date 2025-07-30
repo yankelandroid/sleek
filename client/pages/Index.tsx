@@ -1,8 +1,13 @@
-import { useAlarmState } from '@/hooks/use-alarm-state';
-import { Alarm } from '@shared/api';
-import { Plus, Edit2, Trash2, Music } from 'lucide-react';
+import { useAlarmState } from "@/hooks/use-alarm-state";
+import { Alarm } from "@shared/api";
+import { Plus, Edit2, Trash2, Music } from "lucide-react";
 
-function AlarmCard({ alarm, onEdit, onDelete, onToggle }: {
+function AlarmCard({
+  alarm,
+  onEdit,
+  onDelete,
+  onToggle,
+}: {
   alarm: Alarm;
   onEdit: (alarm: Alarm) => void;
   onDelete: (id: string) => void;
@@ -14,7 +19,7 @@ function AlarmCard({ alarm, onEdit, onDelete, onToggle }: {
         <div className="flex-1">
           <div
             className={`text-4xl sm:text-3xl font-semibold mb-2 sm:mb-1 transition-colors duration-200 ${
-              alarm.enabled ? 'text-alarm-text' : 'text-alarm-text-light'
+              alarm.enabled ? "text-alarm-text" : "text-alarm-text-light"
             }`}
           >
             {alarm.time}
@@ -41,12 +46,14 @@ function AlarmCard({ alarm, onEdit, onDelete, onToggle }: {
           <button
             onClick={() => onToggle(alarm.id)}
             className={`relative w-12 h-7 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-alarm-primary focus:ring-opacity-50 button-hover-lift ${
-              alarm.enabled ? 'bg-alarm-primary shadow-lg shadow-alarm-primary/30' : 'bg-alarm-surface-lighter'
+              alarm.enabled
+                ? "bg-alarm-primary shadow-lg shadow-alarm-primary/30"
+                : "bg-alarm-surface-lighter"
             }`}
           >
             <div
               className={`absolute top-0.5 w-6 h-6 bg-white rounded-full transition-all duration-300 shadow-lg ${
-                alarm.enabled ? 'left-5' : 'left-0.5'
+                alarm.enabled ? "left-5" : "left-0.5"
               }`}
             />
           </button>
@@ -85,9 +92,12 @@ function EmptyState({ onAddAlarm }: { onAddAlarm: () => void }) {
   );
 }
 
-function AddAlarmModal({ state, actions }: {
-  state: ReturnType<typeof useAlarmState>['state'];
-  actions: ReturnType<typeof useAlarmState>['actions'];
+function AddAlarmModal({
+  state,
+  actions,
+}: {
+  state: ReturnType<typeof useAlarmState>["state"];
+  actions: ReturnType<typeof useAlarmState>["actions"];
 }) {
   if (!state.isAddingAlarm) return null;
 
@@ -97,7 +107,7 @@ function AddAlarmModal({ state, actions }: {
     <div className="fixed inset-0 bg-alarm-overlay/80 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fade-in">
       <div className="bg-alarm-surface border border-alarm-surface-light rounded-3xl p-6 md:p-8 w-full max-w-lg max-h-[90vh] overflow-y-auto animate-scale-in glass-effect shadow-2xl">
         <h3 className="text-xl md:text-2xl font-semibold text-alarm-text text-center mb-6 md:mb-8 animate-slide-down">
-          {isEditing ? 'Modifier le réveil' : 'Ajouter un réveil'}
+          {isEditing ? "Modifier le réveil" : "Ajouter un réveil"}
         </h3>
 
         <div className="space-y-6">
@@ -108,8 +118,10 @@ function AddAlarmModal({ state, actions }: {
             </label>
             <input
               type="time"
-              value={state.selectedAlarm?.time || ''}
-              onChange={(e) => actions.updateSelectedAlarm({ time: e.target.value })}
+              value={state.selectedAlarm?.time || ""}
+              onChange={(e) =>
+                actions.updateSelectedAlarm({ time: e.target.value })
+              }
               className="w-full bg-alarm-surface-light border border-alarm-surface-lighter rounded-xl px-4 py-3 text-alarm-text text-lg focus:outline-none focus:ring-2 focus:ring-alarm-primary focus:border-transparent transition-all duration-200 focus-ring"
             />
           </div>
@@ -122,8 +134,10 @@ function AddAlarmModal({ state, actions }: {
             <input
               type="text"
               placeholder="Mon réveil du matin"
-              value={state.selectedAlarm?.label || ''}
-              onChange={(e) => actions.updateSelectedAlarm({ label: e.target.value })}
+              value={state.selectedAlarm?.label || ""}
+              onChange={(e) =>
+                actions.updateSelectedAlarm({ label: e.target.value })
+              }
               className="w-full bg-alarm-surface-light border border-alarm-surface-lighter rounded-xl px-4 py-3 text-alarm-text focus:outline-none focus:ring-2 focus:ring-alarm-primary focus:border-transparent transition-all duration-200 focus-ring"
             />
           </div>
@@ -139,7 +153,7 @@ function AddAlarmModal({ state, actions }: {
                 placeholder="https://youtube.com/watch?v=..."
                 value={state.youtubeQuery}
                 onChange={(e) => actions.setYoutubeQuery(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && actions.convertFromUrl()}
+                onKeyDown={(e) => e.key === "Enter" && actions.convertFromUrl()}
                 className="flex-1 bg-alarm-surface-light border border-alarm-surface-lighter rounded-xl px-4 py-3 text-alarm-text focus:outline-none focus:ring-2 focus:ring-alarm-primary focus:border-transparent transition-all duration-200 focus-ring"
               />
               <button
@@ -147,7 +161,7 @@ function AddAlarmModal({ state, actions }: {
                 disabled={state.isSearching || !state.youtubeQuery.trim()}
                 className="bg-alarm-secondary hover:bg-alarm-secondary/90 disabled:opacity-50 text-white px-6 py-3 rounded-xl font-medium transition-all duration-200 button-hover-lift focus-ring shadow-lg shadow-alarm-secondary/30 whitespace-nowrap"
               >
-                {state.isSearching ? '⚡' : 'Convertir'}
+                {state.isSearching ? "⚡" : "Convertir"}
               </button>
             </div>
 
@@ -159,22 +173,24 @@ function AddAlarmModal({ state, actions }: {
                 </div>
                 <div className="flex items-center gap-2 text-alarm-text mb-2">
                   <Music className="w-4 h-4 flex-shrink-0" />
-                  <span className="truncate">{state.selectedAlarm.songTitle}</span>
+                  <span className="truncate">
+                    {state.selectedAlarm.songTitle}
+                  </span>
                 </div>
                 <div className="text-alarm-text-muted text-sm italic">
-                  {state.selectedAlarm.conversionStatus === 'converting' && (
+                  {state.selectedAlarm.conversionStatus === "converting" && (
                     <div className="flex items-center gap-2">
                       <div className="w-4 h-4 border-2 border-alarm-secondary border-t-transparent rounded-full animate-spin"></div>
                       Conversion en cours...
                     </div>
                   )}
-                  {state.selectedAlarm.conversionStatus === 'ready' && '✅ Fichier MP3 prêt pour le réveil'}
-                  {state.selectedAlarm.conversionStatus === 'error' && '❌ Erreur lors de la conversion'}
+                  {state.selectedAlarm.conversionStatus === "ready" &&
+                    "✅ Fichier MP3 prêt pour le réveil"}
+                  {state.selectedAlarm.conversionStatus === "error" &&
+                    "❌ Erreur lors de la conversion"}
                 </div>
               </div>
             )}
-
-
           </div>
         </div>
 

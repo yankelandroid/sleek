@@ -21,7 +21,7 @@ export interface Alarm {
   enabled: boolean;
   youtubeUrl?: string;
   songTitle?: string;
-  conversionStatus?: 'converting' | 'ready' | 'error';
+  conversionStatus?: "converting" | "ready" | "error";
   repeatDays?: string[]; // ['monday', 'tuesday', etc.]
   volume?: number; // 0-100
   fadeIn?: boolean;
