@@ -159,24 +159,51 @@ export function useAlarmState() {
     }));
   }, []);
 
-  const searchYoutube = useCallback(() => {
+  const convertFromUrl = useCallback(() => {
     if (!state.youtubeQuery.trim()) return;
-    
+
+    // Basic YouTube URL validation
+    const isValidYouTubeUrl = /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/.test(state.youtubeQuery);
+
+    if (!isValidYouTubeUrl) {
+      // Show error or handle invalid URL
+      return;
+    }
+
     setState(prev => ({ ...prev, isSearching: true }));
-    
-    // Simulate API call
+
+    // Extract video title from URL (simulated)
+    const extractTitleFromUrl = (url: string) => {
+      // In a real implementation, you'd make an API call to get video metadata
+      const videoId = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/)?.[1];
+      return `Vidéo YouTube ${videoId?.substring(0, 8) || 'inconnue'}`;
+    };
+
+    const songTitle = extractTitleFromUrl(state.youtubeQuery);
+
+    // Start conversion process
+    setState(prev => ({
+      ...prev,
+      selectedAlarm: prev.selectedAlarm ? {
+        ...prev.selectedAlarm,
+        youtubeUrl: state.youtubeQuery,
+        songTitle,
+        conversionStatus: 'converting'
+      } : null,
+      isSearching: false,
+      youtubeQuery: '' // Clear the input after conversion starts
+    }));
+
+    // Simulate conversion process
     setTimeout(() => {
-      const filteredResults = mockSearchResults.filter(result =>
-        result.title.toLowerCase().includes(state.youtubeQuery.toLowerCase()) ||
-        result.channel.toLowerCase().includes(state.youtubeQuery.toLowerCase())
-      );
-      
       setState(prev => ({
         ...prev,
-        searchResults: filteredResults.length > 0 ? filteredResults : mockSearchResults,
-        isSearching: false
+        selectedAlarm: prev.selectedAlarm ? {
+          ...prev.selectedAlarm,
+          conversionStatus: 'ready'
+        } : null
       }));
-    }, 800);
+    }, 3000); // Longer conversion time to simulate real MP3 conversion
   }, [state.youtubeQuery]);
 
   const selectSong = useCallback((song: YouTubeSearchResult) => {
