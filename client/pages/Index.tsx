@@ -121,7 +121,7 @@ function AddAlarmModal({ state, actions }: {
             </label>
             <input
               type="text"
-              placeholder="Mon r��veil du matin"
+              placeholder="Mon réveil du matin"
               value={state.selectedAlarm?.label || ''}
               onChange={(e) => actions.updateSelectedAlarm({ label: e.target.value })}
               className="w-full bg-alarm-surface-light border border-alarm-surface-lighter rounded-xl px-4 py-3 text-alarm-text focus:outline-none focus:ring-2 focus:ring-alarm-primary focus:border-transparent transition-all duration-200 focus-ring"
@@ -174,32 +174,7 @@ function AddAlarmModal({ state, actions }: {
               </div>
             )}
 
-            {/* Search Results */}
-            {state.searchResults.length > 0 && (
-              <div className="max-h-48 overflow-y-auto border border-alarm-surface-lighter rounded-xl bg-alarm-surface-light">
-                {state.searchResults.map((song) => (
-                  <div
-                    key={song.id}
-                    onClick={() => actions.selectSong(song)}
-                    className="p-3 border-b border-alarm-surface-lighter last:border-b-0 cursor-pointer hover:bg-alarm-surface-lighter transition-colors duration-200 flex items-center gap-3"
-                  >
-                    <img
-                      src={song.thumbnail}
-                      alt={song.title}
-                      className="w-12 h-9 rounded object-cover"
-                    />
-                    <div className="flex-1 min-w-0">
-                      <div className="text-alarm-text text-sm font-medium truncate">
-                        {song.title}
-                      </div>
-                      <div className="text-alarm-text-muted text-xs">
-                        {song.channel} • {song.duration}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
+
           </div>
         </div>
 
